@@ -49,7 +49,7 @@ export const storiesData: Story[] = [
     title: "Designed in US, made in China: Why Apple is stuck",
     description:
       "China sits at the heart of Apple's supply chain - and it has benefited hugely from it. Can they break up?",
-    imageUrl: "/apple-china-manufacturing.jpg",
+    imageUrl: "https://ichef.bbci.co.uk/news/1536/cpsprodpb/f86a/live/3d6b7190-16a2-11f0-b2d2-fdaed6fdfe2b.jpg.webp",
     category: "Business",
     time: "7 days ago",
   },
