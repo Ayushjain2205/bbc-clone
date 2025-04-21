@@ -2,9 +2,12 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Menu, Search, X, ChevronDown, ChevronLeft, ChevronRight, Play, ArrowRight, CircleDot } from "lucide-react"
+import { ChevronDown, Play, ArrowRight, CircleDot, ChevronLeft, ChevronRight, Search } from "lucide-react"
 import { useState } from "react"
 import { StoriesOverlay } from "@/components/stories/stories-overlay"
+import { newsData } from "@/data/news"
+import { AudioSection } from "@/components/audio/audio-section"
+import { Navbar } from "@/components/navbar/navbar"
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -15,49 +18,11 @@ export default function Home() {
       {/* Stories Overlay */}
       <StoriesOverlay isOpen={storiesOpen} onClose={() => setStoriesOpen(false)} />
 
-      {/* Header */}
-      <header className="border-b border-gray-200 relative z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-3">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="flex items-center space-x-1">
-              {menuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <>
-                  <Menu className="w-5 h-5" />
-                  <Search className="w-5 h-5" />
-                </>
-              )}
-            </button>
-            <div className="flex items-center justify-center">
-              <Link href="/" className="flex items-center">
-                <div className="flex">
-                  <div className="bg-black w-8 h-8 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">B</span>
-                  </div>
-                  <div className="bg-black w-8 h-8 flex items-center justify-center ml-0.5">
-                    <span className="text-white font-bold text-lg">B</span>
-                  </div>
-                  <div className="bg-black w-8 h-8 flex items-center justify-center ml-0.5">
-                    <span className="text-white font-bold text-lg">C</span>
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              {!storiesOpen && (
-                <button
-                  onClick={() => setStoriesOpen(true)}
-                  className="bg-black text-white px-3 py-1.5 text-sm font-bold"
-                >
-                  View Top
-                </button>
-              )}
-              <button className="text-black text-sm font-bold">Sign In</button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar 
+        onMenuToggle={setMenuOpen}
+        onStoriesOpen={() => setStoriesOpen(true)}
+        isStoriesOpen={storiesOpen}
+      />
 
       {/* Mobile Menu Overlay */}
       {menuOpen && (
@@ -199,7 +164,7 @@ export default function Home() {
             <div className="mb-6">
               <Link href="#" className="group">
                 <Image
-                  src="/ukraine-russia-meeting.jpg"
+                  src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/3faa/live/50f03c10-1ddb-11f0-b265-abe347419ae3.jpg.webp"
                   width={500}
                   height={300}
                   alt="Ukraine Russia meeting"
@@ -352,7 +317,7 @@ export default function Home() {
             <div>
               <Link href="#" className="group">
                 <Image
-                  src="/great-train-robbery.jpg"
+                  src="https://ichef.bbci.co.uk/images/ic/1920x1080/p0l3l1vq.jpg.webp"
                   width={600}
                   height={400}
                   alt="Police officers with suspects from the Great Train Robbery"
@@ -375,7 +340,7 @@ export default function Home() {
             <div>
               <Link href="#" className="group">
                 <Image
-                  src="/pride-prejudice-landscape.jpg"
+                  src="https://ichef.bbci.co.uk/images/ic/1024xn/p0l56fjv.jpg.webp"
                   width={600}
                   height={400}
                   alt="Stately home with lake from Pride and Prejudice"
@@ -398,480 +363,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* This Week in Audio Section */}
-        <div className="mt-12 border-t-2 border-black py-8">
-          <div className="mb-6">
-            <h2 className="text-base uppercase font-roboto font-bold">THIS WEEK IN AUDIO</h2>
-          </div>
-          <div className="flex justify-end mb-4">
-            <div className="flex">
-              <button className="w-10 h-10 bg-gray-200 flex items-center justify-center">
-                <ChevronLeft className="w-6 h-6 text-gray-600" />
-              </button>
-              <button className="w-10 h-10 bg-gray-800 flex items-center justify-center ml-1">
-                <ChevronRight className="w-6 h-6 text-white" />
-              </button>
-            </div>
-          </div>
-
-          <div className="flex overflow-x-auto space-x-5 pb-4 -mx-1 px-1">
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-vince-mcmahon.jpg"
-                    width={190}
-                    height={190}
-                    alt="Vince McMahon podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">Good Bad Billionaire</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">
-                    Vince McMahon: Wrestling's ringmaster
-                  </p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                        <polyline points="7 3 7 8 15 8"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">48 mins</span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-climate-question.jpg"
-                    width={190}
-                    height={190}
-                    alt="Climate Question podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">The Climate Question</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">
-                    How can we cut the world's shipping emissions?
-                  </p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                        <polyline points="7 3 7 8 15 8"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">27 mins</span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-history-heroes.jpg"
-                    width={190}
-                    height={190}
-                    alt="History's Heroes podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">History's Heroes</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">
-                    Leif Larsen and the Shetland Bus
-                  </p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                        <polyline points="7 3 7 8 15 8"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">28 mins</span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-lives-less-ordinary.jpg"
-                    width={190}
-                    height={190}
-                    alt="Lives Less Ordinary podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">Lives Less Ordinary</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">
-                    Swimming blind: my journey to self-acceptance
-                  </p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">38 mins</span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-documentary.jpg"
-                    width={190}
-                    height={190}
-                    alt="Documentary Podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">The Documentary Podcast</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">
-                    Assignment: New Zealand - what counts as Māori equality
-                  </p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">27 mins</span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-crowdscience.jpg"
-                    width={190}
-                    height={190}
-                    alt="CrowdScience podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">CrowdScience</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">Why do animals swallow rocks?</p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">29 mins</span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="min-w-[190px] w-[190px] flex-shrink-0">
-              <Link href="#" className="group block">
-                <div className="relative aspect-square mb-2">
-                  <Image
-                    src="/podcast-lives-less-ordinary-2.jpg"
-                    width={190}
-                    height={190}
-                    alt="Lives Less Ordinary podcast"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-                    <div className="flex">
-                      <div className="bg-black w-4 h-4 flex items-center justify-center">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">B</span>
-                      </div>
-                      <div className="bg-black w-4 h-4 flex items-center justify-center ml-[1px]">
-                        <span className="text-white font-bold text-[10px]">C</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="2" height="8" x="1" y="4" fill="white" />
-                      <rect width="2" height="10" x="4" y="3" fill="white" />
-                      <rect width="2" height="12" x="7" y="2" fill="white" />
-                      <rect width="2" height="8" x="10" y="4" fill="white" />
-                      <rect width="2" height="10" x="13" y="3" fill="white" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-[13px] text-gray-600 leading-tight font-roboto">Lives Less Ordinary</h3>
-                  <p className="text-[15px] leading-tight font-bold font-merriweather">
-                    Rewind: The woman who wanted to bring down apartheid from within
-                  </p>
-                </div>
-                <div className="flex items-center mt-2 text-xs text-gray-600">
-                  <div className="flex items-center">
-                    <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-3.5 h-3.5"
-                      >
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                      </svg>
-                    </button>
-                    <span>Save</span>
-                  </div>
-                  <span className="ml-2">41 mins</span>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <AudioSection />
 
         {/* More News Section */}
         <div className="mt-12 border-t-2 border-black py-8">
@@ -1236,63 +728,58 @@ export default function Home() {
               <div className="mb-6">
                 <Link href="#" className="group block">
                   <Image
-                    src="/liverpool-player.jpg"
+                    src={newsData.sports.featured.image.src}
                     width={300}
                     height={200}
-                    alt="Liverpool player celebrating"
+                    alt={newsData.sports.featured.image.alt}
                     className="w-full h-auto mb-2"
                   />
                   <h3 className="text-lg font-merriweather font-bold group-hover:underline">
-                    'Iconic moment in a special Liverpool career - but was it a farewell?'
+                    {newsData.sports.featured.title}
                   </h3>
-                  <p className="text-sm font-merriweather mt-1">
-                    Trent Alexander-Arnold enjoyed wild celebrations with Liverpool fans after scoring them to within
-                    touching distance of the Premier League title. But was it a farewell?
-                  </p>
-                  <div className="flex items-center mt-2 text-xs text-gray-500">
-                    <span>1 hr ago</span>
-                    <span className="mx-2">|</span>
-                    <span>Liverpool</span>
-                  </div>
                 </Link>
               </div>
 
-              <div className="mb-4 pb-4 border-b border-gray-200">
-                <Link href="#" className="group block">
-                  <div className="flex items-center">
-                    <CircleDot className="w-4 h-4 text-red-600 mr-2" />
+              {newsData.sports.articles.map((story, index) => (
+                <div key={story.id} className="mb-4 pb-4 border-b border-gray-200">
+                  <Link href="#" className="group block">
+                    {story.isLive ? (
+                      <div className="flex items-center">
+                        <CircleDot className="w-4 h-4 text-red-600 mr-2" />
+                        <h3 className="text-base font-merriweather font-bold group-hover:underline">
+                          {story.timeAgo.toUpperCase()} {story.title}
+                        </h3>
+                      </div>
+                    ) : (
+                      <>
+                        <h3 className="text-base font-merriweather font-bold group-hover:underline">
+                          {story.title}
+                        </h3>
+                        <div className="flex items-center mt-1 text-xs text-gray-500">
+                          <span>{story.timeAgo}</span>
+                          <span className="mx-2">|</span>
+                          <span>{story.category}</span>
+                        </div>
+                      </>
+                    )}
+                  </Link>
+                </div>
+              ))}
+
+              {newsData.topStories.map((story) => (
+                <div key={story.id} className="mb-4">
+                  <Link href="#" className="group block">
                     <h3 className="text-base font-merriweather font-bold group-hover:underline">
-                      LIVE La Liga: Vinicius opener disallowed as Real being held by Athletic
+                      {story.title}
                     </h3>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="mb-4 pb-4 border-b border-gray-200">
-                <Link href="#" className="group block">
-                  <h3 className="text-base font-merriweather font-bold group-hover:underline">
-                    Piastri wins in Saudi Arabia and takes title lead
-                  </h3>
-                  <div className="flex items-center mt-1 text-xs text-gray-500">
-                    <span>2 hrs ago</span>
-                    <span className="mx-2">|</span>
-                    <span>Formula 1</span>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="mb-4">
-                <Link href="#" className="group block">
-                  <h3 className="text-base font-merriweather font-bold group-hover:underline">
-                    Saka's ankle injury nothing serious - Arteta
-                  </h3>
-                  <div className="flex items-center mt-1 text-xs text-gray-500">
-                    <span>4 hrs ago</span>
-                    <span className="mx-2">|</span>
-                    <span>Arsenal</span>
-                  </div>
-                </Link>
-              </div>
+                    <div className="flex items-center mt-1 text-xs text-gray-500">
+                      <span>{story.timeAgo}</span>
+                      <span className="mx-2">|</span>
+                      <span>{story.category}</span>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
 
             {/* BUSINESS */}
@@ -1302,68 +789,34 @@ export default function Home() {
                 <ArrowRight className="w-4 h-4 ml-1" />
               </div>
 
-              <div className="mb-6">
-                <Link href="#" className="group block">
-                  <Image
-                    src="/apple-china-manufacturing.jpg"
-                    width={300}
-                    height={200}
-                    alt="Apple manufacturing in China"
-                    className="w-full h-auto mb-2"
-                  />
-                  <h3 className="text-lg font-merriweather font-bold group-hover:underline">
-                    Designed in US, made in China: Why Apple is stuck
-                  </h3>
-                  <p className="text-sm font-merriweather mt-1">
-                    China sits at the heart of Apple's supply chain - and it has benefited hugely from it. Can they
-                    break up?
-                  </p>
-                  <div className="flex items-center mt-2 text-xs text-gray-500">
-                    <span>7 days ago</span>
-                    <span className="mx-2">|</span>
-                    <span>Asia</span>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="mb-4 pb-4 border-b border-gray-200">
-                <Link href="#" className="group block">
-                  <h3 className="text-base font-merriweather font-bold group-hover:underline">
-                    Starmer and Trump discuss 'productive' trade talks
-                  </h3>
-                  <div className="flex items-center mt-1 text-xs text-gray-500">
-                    <span>2 days ago</span>
-                    <span className="mx-2">|</span>
-                    <span>UK</span>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="mb-4 pb-4 border-b border-gray-200">
-                <Link href="#" className="group block">
-                  <h3 className="text-base font-merriweather font-bold group-hover:underline">
-                    What we know about US-Ukraine minerals deal
-                  </h3>
-                  <div className="flex items-center mt-1 text-xs text-gray-500">
-                    <span>2 days ago</span>
-                    <span className="mx-2">|</span>
-                    <span>World</span>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="mb-4">
-                <Link href="#" className="group block">
-                  <h3 className="text-base font-merriweather font-bold group-hover:underline">
-                    US lays out plans to hit Chinese ships with port fees
-                  </h3>
-                  <div className="flex items-center mt-1 text-xs text-gray-500">
-                    <span>2 days ago</span>
-                    <span className="mx-2">|</span>
-                    <span>Business</span>
-                  </div>
-                </Link>
-              </div>
+              {newsData.business.map((story, index) => (
+                <div key={story.id} className={`mb-${index === 0 ? '6' : '4'} ${index > 0 ? 'pb-4 border-b border-gray-200' : ''}`}>
+                  <Link href="#" className="group block">
+                    {story.image && (
+                      <Image
+                        src={story.image.src}
+                        width={300}
+                        height={200}
+                        alt={story.image.alt}
+                        className="w-full h-auto mb-2"
+                      />
+                    )}
+                    <h3 className={`${index === 0 ? 'text-lg' : 'text-base'} font-merriweather font-bold group-hover:underline`}>
+                      {story.title}
+                    </h3>
+                    {story.description && (
+                      <p className="text-sm font-merriweather mt-1">
+                        {story.description}
+                      </p>
+                    )}
+                    <div className="flex items-center mt-2 text-xs text-gray-500">
+                      <span>{story.timeAgo}</span>
+                      <span className="mx-2">|</span>
+                      <span>{story.category}</span>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>
