@@ -429,7 +429,7 @@ export default function Home() {
               <div className="mb-6">
                 <Link href="#" className="group block">
                   <Image
-                    src="/anti-trump-protests.jpg"
+                    src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/32c2/live/70aee0e0-1cb6-11f0-8a1e-3ff815141b98.jpg.webp"
                     width={300}
                     height={200}
                     alt="Anti-Trump protests"
@@ -500,7 +500,7 @@ export default function Home() {
               <div className="mb-6">
                 <Link href="#" className="group block">
                   <Image
-                    src="/south-african-politician.jpg"
+                    src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/5b59/live/bc22b440-1e85-11f0-91c2-a77218b5dd61.jpg.webp"
                     width={300}
                     height={200}
                     alt="South African politician"

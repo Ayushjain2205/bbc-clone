@@ -114,7 +114,7 @@ export const newsData = {
       timeAgo: "1 hr ago",
       section: "Sports",
       image: {
-        src: "/liverpool-player.jpg",
+        src: "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/04ce/live/fdc33cc0-1e90-11f0-b1b3-7358f8d35a35.jpg.webp",
         alt: "Liverpool player celebrating"
       }
     },
@@ -150,7 +150,7 @@ export const newsData = {
       description: "China sits at the heart of Apple's supply chain - and it has benefited hugely from it. Can they break up?",
       category: "Asia",
       image: {
-        src: "/apple-china-manufacturing.jpg",
+        src: "https://ichef.bbci.co.uk/news/1536/cpsprodpb/f86a/live/3d6b7190-16a2-11f0-b2d2-fdaed6fdfe2b.jpg.webp",
         alt: "Apple manufacturing in China"
       },
       timeAgo: "7 days ago",
