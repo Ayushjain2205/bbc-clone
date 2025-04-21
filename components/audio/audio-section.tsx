@@ -13,7 +13,6 @@ interface PodcastCardProps {
     src: string
     alt: string
   }
-  link: string
 }
 
 const BBCLogo = () => (
@@ -40,9 +39,8 @@ const AudioWaveform = () => (
   </svg>
 )
 
-const PodcastCard = ({ title, subtitle, duration, image, link }: PodcastCardProps) => (
+const PodcastCard = ({ title, subtitle, duration, image }: PodcastCardProps) => (
   <div className="min-w-[190px] w-[190px] flex-shrink-0">
-    <Link href={link} className="group block">
       <div className="relative aspect-square mb-2">
         <Image
           src={image.src}
@@ -51,9 +49,6 @@ const PodcastCard = ({ title, subtitle, duration, image, link }: PodcastCardProp
           alt={image.alt}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-1 left-1/2 transform -translate-x-1/2 bg-white px-1">
-          <BBCLogo />
-        </div>
         <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2">
           <AudioWaveform />
         </div>
@@ -64,14 +59,13 @@ const PodcastCard = ({ title, subtitle, duration, image, link }: PodcastCardProp
       </div>
       <div className="flex items-center mt-2 text-xs text-gray-600">
         <div className="flex items-center">
-          <button className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
+          <button className="w-6 h-6 hover:bg-gray-100 rounded-full flex items-center justify-center mr-1.5">
             <Bookmark className="w-3.5 h-3.5" />
           </button>
           <span>Save</span>
         </div>
         <span className="ml-2">{duration}</span>
       </div>
-    </Link>
   </div>
 )
 

@@ -8,7 +8,6 @@ export interface AudioItem {
     alt: string;
     srcSet?: string;
   };
-  link: string;
 }
 
 export interface NewsItem {
@@ -29,25 +28,23 @@ export const newsData = {
   weeklyAudio: [
     {
       id: "p0l5hwwl",
-      title: "Good Bad Billionaire",
-      subtitle: "Vince McMahon: Wrestling's ringmaster",
+      title: "Business Daily",
+      subtitle: "The cost of smog",
       duration: "48 mins",
       image: {
-        src: "/podcast-vince-mcmahon.jpg",
-        alt: "Vince McMahon podcast"
-      },
-      link: "/audio/play/p0l5hwwl"
+        src: "https://ichef.bbci.co.uk/images/ic/1376x774/p0k6r7vm.jpg.webp",
+        alt: "Business Daily podcast"
+      }
     },
     {
       id: "p0l5hpbc",
       title: "The Climate Question",
-      subtitle: "How can we cut the world's shipping emissions?",
+      subtitle: "Are electric planes the future",
       duration: "27 mins",
       image: {
-        src: "/podcast-climate-question.jpg",
+        src: "https://ichef.bbci.co.uk/images/ic/1376x774/p0kq8n5g.jpg.webp",
         alt: "Climate Question podcast"
-      },
-      link: "/audio/play/p0l5hpbc"
+      }
     },
     {
       id: "p0l5j0sh",
@@ -55,10 +52,9 @@ export const newsData = {
       subtitle: "Leif Larsen and the Shetland Bus",
       duration: "28 mins",
       image: {
-        src: "/podcast-history-heroes.jpg",
+        src: "https://ichef.bbci.co.uk/images/ic/1376x774/p0d7m6zz.jpg.webp",
         alt: "History's Heroes podcast"
-      },
-      link: "/audio/play/p0l5j0sh"
+      }
     },
     {
       id: "p0l5b8p6",
@@ -66,10 +62,9 @@ export const newsData = {
       subtitle: "Swimming blind: my journey to self-acceptance",
       duration: "38 mins",
       image: {
-        src: "/podcast-lives-less-ordinary.jpg",
+        src: "https://ichef.bbci.co.uk/images/ic/1376x774/p0d7m6zz.jpg.webp",
         alt: "Lives Less Ordinary podcast"
-      },
-      link: "/audio/play/p0l5b8p6"
+      }
     },
     {
       id: "p0l5b8p7",
@@ -77,10 +72,9 @@ export const newsData = {
       subtitle: "Assignment: New Zealand - what counts as Māori equality",
       duration: "27 mins",
       image: {
-        src: "/podcast-documentary.jpg",
+        src: "https://ichef.bbci.co.uk/images/ic/480x270/p0ks8w6j.jpg.webp",
         alt: "Documentary Podcast"
-      },
-      link: "/audio/play/p0l5b8p7"
+      }
     },
     {
       id: "p0l5b8p8",
@@ -88,10 +82,9 @@ export const newsData = {
       subtitle: "Why do animals swallow rocks?",
       duration: "29 mins",
       image: {
-        src: "/podcast-crowdscience.jpg",
+        src: "https://ichef.bbci.co.uk/images/ic/480x270/p0l5hpby.jpg.webp",
         alt: "CrowdScience podcast"
-      },
-      link: "/audio/play/p0l5b8p8"
+      }
     },
     {
       id: "p0l5b8p9",
@@ -99,10 +92,9 @@ export const newsData = {
       subtitle: "Rewind: The woman who wanted to bring down apartheid from within",
       duration: "41 mins",
       image: {
-        src: "/podcast-lives-less-ordinary-2.jpg",
+        src: "https://ichef.bbci.co.uk/images/ic/1376x774/p0d7m6zz.jpg.webp",
         alt: "Lives Less Ordinary podcast"
-      },
-      link: "/audio/play/p0l5b8p9"
+      }
     }
   ],
   topStories: [
